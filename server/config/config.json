@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "husfuu_binarian",
+    "password": "husfuu_binarian_pass",
+    "database": "challenge08_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "husfuu_binarian",
+    "password": "husfuu_binarian_pass",
+    "database": "challenge08_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "husfuu_binarian",
+    "password": "husfuu_binarian_pass",
+    "database": "challenge08_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
