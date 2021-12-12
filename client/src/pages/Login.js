@@ -20,7 +20,6 @@ function Login({setToken}) {
             navigate("/opponent")
         })
     }
-
     return (
         <div className='login'>
             <h1>Login</h1>

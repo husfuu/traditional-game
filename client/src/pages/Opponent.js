@@ -1,13 +1,12 @@
 import React, {useState, useContext} from 'react'
-import backgroundImg from '../assets/requirements.png'
 import OpponentCard from '../components/OpponentCard'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import  {AuthContext} from '../helpers/AuthContext'
-// data
+import '../styles/Opponent.css'
+
 const opponentData = require('../data/opponents.json')
 
 const Opponent = () => {
-    // const [getAllItems, setAllItems] = useState(opponentData)
     const [getRenderedItems, setRenderedItems] = useState(opponentData)
     const isAuth = useContext(AuthContext)
 
@@ -22,21 +21,20 @@ const Opponent = () => {
     }
 
     return (
-        <div className="opponent" style={{backgroundImage: `url(${backgroundImg})`}} >
-        
-        <Container>
-            <Row>
-                <h1>CHOOSE YOUR OPPONENT</h1>
+        <div className="opponent" >
+        <Container className='container' >
+            <Row className='title' >
+            <h3> <b> CHOOSE YOUR OPPONENT </b> </h3>
             </Row>
-            <Row>
-                <Col> <Button onClick={() => onClickButton('ALL')}> ALL </Button> </Col>
-                <Col> <Button onClick={() => onClickButton('NOVICE')}> NOVICE </Button> </Col>
-                <Col> <Button onClick={() => onClickButton('CLASS A')}> CLASS A </Button> </Col>
-                <Col> <Button onClick={() => onClickButton('CLASS B')}> CLASS B </Button> </Col>
-                <Col> <Button onClick={() => onClickButton('CLASS C')}> CLASS C </Button> </Col>
-                <Col> <Button onClick={() => onClickButton('CLASS D')}> CLASS D </Button> </Col>
-                <Col> <Button onClick={() => onClickButton('CANDIDATE MASTER')}> CANDIDATE MASTER </Button> </Col>
-                <Col> <Button onClick={() => onClickButton('GRAND MASTER')}> GRAND MASTER </Button> </Col>
+            <Row className='button-categorize'>
+                <Col> <Button onClick={() => onClickButton('ALL')}> <b>ALL</b>  </Button> </Col>
+                <Col> <Button onClick={() => onClickButton('NOVICE')}> <b>NOVICE</b> </Button> </Col>
+                <Col> <Button onClick={() => onClickButton('CLASS A')}> <b> CLASS A </b> </Button> </Col>
+                <Col> <Button onClick={() => onClickButton('CLASS B')}> <b> CLASS B </b> </Button> </Col>
+                <Col> <Button onClick={() => onClickButton('CLASS C')}> <b>CLASS C</b> </Button> </Col>
+                <Col> <Button onClick={() => onClickButton('CLASS D')}> <b> CLASS D </b> </Button> </Col>
+                <Col> <Button onClick={() => onClickButton('CANDIDATE MASTER')}> <b> CANDIDATE MASTER </b> </Button> </Col>
+                <Col> <Button onClick={() => onClickButton('GRAND MASTER')}> <b>GRAND MASTER</b> </Button> </Col>
             </Row>
 
             <Row xw={1} md={4} className="g-4" >

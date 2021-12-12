@@ -1,9 +1,42 @@
+.opponent{
+    background-image: url("../assets/requirements.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.title{
+    color: white;
+
+}
+
+.container{
+    width: 70%;
+}
+
+.title{
+    padding-top: 20vh;
+}
+
+.button-categorize button {
+    height: 5rem;
+    width: 5rem;
+    font-size: 10px;
+}
+
+.button-categorize{
+    grid-gap: 0.1px;
+    margin: 20px 0px 50px 0px;
+}
+
 .card{
-    width: 15rem;
+    background: #374045;
+    min-height: 5rem;
 }
 
 .card .avatar {
     border-radius: 100px;
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
 }

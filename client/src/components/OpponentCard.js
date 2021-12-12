@@ -14,16 +14,16 @@ const OpponentCard = ({name, bio, avatar, level, createdAt}) => {
     
     return (
         <div>
-            <Card className='card' style={{backgroundColor: '#ffffff14'} }>
+            <Card className='card' >
                 <Card.Body>
-                    <Row  >
+                    <Row >
                         <Col sm={4} ><Card.Img className='avatar' variant="top" src={avatar} /></Col>                        
                         <Col sm={8} > 
-                            <h6 class='text-justify' style={{color: 'white'}} >{name}</h6> 
-                            <p style={{color: 'white'}} > {level} </p>
+                            <p class='text-justify' style={{color: 'white'}} > <b> {name} </b> </p> 
+                            <p style={{color: 'white', fontSize: 12}} > {level} </p>
                         </Col>
                     </Row>
-                    <p style={{color: 'white'}} > {bio} </p>
+                    <p style={{color: 'white', fontSize: 12}} > {bio} </p>
                     <p style={{color: 'white'}} > {createdAt} </p> 
                     <Button variant="primary">Fight</Button>
                 </Card.Body>
