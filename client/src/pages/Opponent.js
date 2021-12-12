@@ -1,18 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import backgroundImg from '../assets/requirements.png'
 import OpponentCard from '../components/OpponentCard'
 import { Container, Row, Col, Button } from 'react-bootstrap'
-
-
-
+import  {AuthContext} from '../helpers/AuthContext'
+// data
 const opponentData = require('../data/opponents.json')
 
 const Opponent = () => {
     // const [getAllItems, setAllItems] = useState(opponentData)
     const [getRenderedItems, setRenderedItems] = useState(opponentData)
+    const isAuth = useContext(AuthContext)
 
     const onClickButton = (chosenCategory) => {
-
         if (chosenCategory === "ALL") {
             setRenderedItems(opponentData)
         }
