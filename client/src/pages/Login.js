@@ -1,6 +1,8 @@
 import React, {useState, useContext} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Container } from 'react-bootstrap'
 import axios from 'axios'
+import '../styles/login.css'
 
 import { UserContext } from '../helpers/UserContext'
 
@@ -21,17 +23,21 @@ function Login({setToken}) {
         })
     }
     return (
-        <div className='login'>
-            <h1>Login</h1>
-            <label> Username </label>
-            <input type="text" onChange={(e) => {
-                setUsername(e.target.value);
-            }}/>
-            <label> Password </label>
-            <input type="text" onChange={(e) => {
-                setPassword(e.target.value);
-            }}/>
-            <button onClick={login} > Login </button>
+        <div className='login-page' >
+            <Container className='container-login'>
+            <div className='login'>
+                <h1>Login</h1>
+                <label> Username </label>
+                <input type="text" onChange={(e) => {
+                    setUsername(e.target.value);
+                }}/>
+                <label> Password </label>
+                <input type="text" onChange={(e) => {
+                    setPassword(e.target.value);
+                }}/>
+                <button onClick={login} > <b> Login </b> </button>
+            </div>
+            </Container>
         </div>
     )
 }

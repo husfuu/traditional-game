@@ -1,0 +1,875 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Rock Paper Scissors",
+    "description" : "This API is being used to traditional game website. By using this api, you can create player, room, game and all the operation of some resources",
+    "contact" : {
+      "email" : "husfuudev@gmail.com"
+    },
+    "version" : "0.0.1"
+  },
+  "servers" : [ {
+    "url" : "/"
+  } ],
+  "tags" : [ {
+    "name" : "player",
+    "description" : "Everything about user"
+  }, {
+    "name" : "room",
+    "description" : "Room operations"
+  }, {
+    "name" : "game",
+    "description" : "Everything about game"
+  } ],
+  "paths" : {
+    "/player/{id}" : {
+      "get" : {
+        "tags" : [ "player" ],
+        "summary" : "Showing the player biodata",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Look certain player biodata",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Look certain player biodata",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "There is no user with the given id",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_500"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/players" : {
+      "get" : {
+        "tags" : [ "player" ],
+        "summary" : "Showing the all player with his biodata",
+        "responses" : {
+          "200" : {
+            "description" : "List of all players and his biodata",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/register" : {
+      "post" : {
+        "tags" : [ "player" ],
+        "summary" : "Player registration",
+        "requestBody" : {
+          "description" : "register user",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/register_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "registration is success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_201"
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_422"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login" : {
+      "post" : {
+        "tags" : [ "player" ],
+        "summary" : "Player registration",
+        "requestBody" : {
+          "description" : "register user",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/login_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Login user",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_2"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stats" : {
+      "get" : {
+        "tags" : [ "player" ],
+        "summary" : "Showing all player statistics",
+        "responses" : {
+          "200" : {
+            "description" : "Show all player statistics",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/inline_response_200_3"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Error occuring when showing all player statistics",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_500_1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stats/{id}" : {
+      "get" : {
+        "tags" : [ "player" ],
+        "summary" : "show the player statistics",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "id player",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Show all player statistics",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_4"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "There is no player with the given id",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_1"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Error occuring when showing the player statistics",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_500_1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rooms" : {
+      "get" : {
+        "tags" : [ "room" ],
+        "summary" : "showing all rooms with open status",
+        "responses" : {
+          "200" : {
+            "description" : "Look all room with open status",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_5"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_500"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "room" ],
+        "summary" : "join the room",
+        "requestBody" : {
+          "description" : "join a room",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/rooms_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "create a room",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_6"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "room" ],
+        "summary" : "create a room",
+        "requestBody" : {
+          "description" : "create a room",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/rooms_body_1"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "create a room",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_6"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/games" : {
+      "get" : {
+        "tags" : [ "game" ],
+        "summary" : "Showing list of game that have been played by all players",
+        "responses" : {
+          "200" : {
+            "description" : "List of game that have been played by players",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_7"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/games/{id}" : {
+      "get" : {
+        "tags" : [ "game" ],
+        "summary" : "Showing list of game that have been played by the player",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "id player",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of game that have been played by the player",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_7"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/game/rounds" : {
+      "get" : {
+        "tags" : [ "game" ],
+        "summary" : "showing the details of the game, like all result every fight",
+        "responses" : {
+          "200" : {
+            "description" : "List of round and its result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_8"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "inline_response_200" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "type" : "object",
+            "properties" : {
+              "username" : {
+                "type" : "string",
+                "example" : "husfuu"
+              },
+              "fullName" : {
+                "type" : "string",
+                "example" : "M. Husni Nur Fadillah"
+              },
+              "email" : {
+                "type" : "string",
+                "example" : "husfuu@yahoo.com"
+              },
+              "bio" : {
+                "type" : "string",
+                "example" : "tampan dan berani"
+              },
+              "avatarURL" : {
+                "type" : "string",
+                "example" : "https://pixabay.com/vectors/girl-cute-cold-winter-anime-scarf-160326/"
+              },
+              "address" : {
+                "type" : "string",
+                "example" : "Jalan Pegangsaan Timur"
+              }
+            }
+          }
+        }
+      },
+      "inline_response_404" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "Fail"
+          },
+          "data" : {
+            "type" : "object",
+            "properties" : {
+              "data" : {
+                "type" : "object",
+                "properties" : {
+                  "message" : {
+                    "type" : "string",
+                    "example" : "Cannot find user with the given id"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "inline_response_500" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "Error"
+          },
+          "data" : {
+            "type" : "object",
+            "properties" : {
+              "data" : {
+                "type" : "object",
+                "properties" : {
+                  "message" : {
+                    "type" : "string",
+                    "example" : "Error retrieving User with the given id"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "inline_response_200_1" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "username" : {
+                  "type" : "string",
+                  "example" : "husfuu"
+                },
+                "fullName" : {
+                  "type" : "string",
+                  "example" : "M. Husni Nur Fadillah"
+                },
+                "numberPhone" : {
+                  "type" : "string",
+                  "example" : "6287777777777"
+                },
+                "address" : {
+                  "type" : "string",
+                  "example" : "jln Pegangsaan Timur"
+                },
+                "avatarURL" : {
+                  "type" : "string",
+                  "example" : "https://pixabay.com/vectors/girl-cute-cold-winter-anime-scarf-160326/"
+                }
+              }
+            }
+          }
+        }
+      },
+      "register_body" : {
+        "type" : "object",
+        "properties" : {
+          "username" : {
+            "type" : "string",
+            "example" : "husfuu"
+          },
+          "email" : {
+            "type" : "string",
+            "example" : "husfuu@yahoo.com"
+          },
+          "password" : {
+            "type" : "string",
+            "example" : "husfuuPass"
+          }
+        }
+      },
+      "inline_response_201" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "type" : "object",
+            "properties" : {
+              "message" : {
+                "type" : "string",
+                "example" : "registration is success"
+              }
+            }
+          }
+        }
+      },
+      "inline_response_422" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "ERROR"
+          },
+          "data" : {
+            "type" : "object",
+            "properties" : {
+              "message" : {
+                "type" : "string",
+                "example" : "cannot register the user"
+              }
+            }
+          }
+        }
+      },
+      "login_body" : {
+        "type" : "object",
+        "properties" : {
+          "username" : {
+            "type" : "string",
+            "example" : "husfuu"
+          },
+          "password" : {
+            "type" : "string",
+            "example" : "husfuuPass"
+          },
+          "avatarURL" : {
+            "type" : "string",
+            "example" : "https://pixabay.com/vectors/girl-cute-cold-winter-anime-scarf-160326/"
+          },
+          "bio" : {
+            "type" : "string",
+            "example" : "idk"
+          },
+          "phoneNumber" : {
+            "type" : "string",
+            "example" : "628777777777"
+          },
+          "address" : {
+            "type" : "string",
+            "example" : "jln Pegangsaan Timur"
+          }
+        }
+      },
+      "inline_response_200_2" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "type" : "object",
+            "properties" : {
+              "message" : {
+                "type" : "string",
+                "example" : "login is success"
+              }
+            }
+          }
+        }
+      },
+      "inline_response_401" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "FAIL"
+          },
+          "data" : {
+            "type" : "object",
+            "properties" : {
+              "message" : {
+                "type" : "string",
+                "example" : "the usernamae or password is incorrect"
+              }
+            }
+          }
+        }
+      },
+      "inline_response_200_3" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          },
+          "usernamae" : {
+            "type" : "string",
+            "example" : "husfuu"
+          },
+          "point" : {
+            "type" : "integer"
+          },
+          "level" : {
+            "type" : "string",
+            "example" : "Grand Master"
+          },
+          "avatarURL" : {
+            "type" : "string",
+            "example" : "https://pixabay.com/vectors/girl-cute-cold-winter-anime-scarf-160326/"
+          }
+        }
+      },
+      "inline_response_500_1" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "Error"
+          },
+          "data" : {
+            "type" : "object",
+            "properties" : {
+              "data" : {
+                "type" : "object",
+                "properties" : {
+                  "message" : {
+                    "type" : "string",
+                    "example" : "Error retrieving all players statistics"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "inline_response_200_4" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "type" : "object",
+            "properties" : {
+              "id" : {
+                "type" : "integer"
+              },
+              "usernamae" : {
+                "type" : "string",
+                "example" : "husfuu"
+              },
+              "point" : {
+                "type" : "integer"
+              },
+              "level" : {
+                "type" : "string",
+                "example" : "Grand Master"
+              },
+              "avatarURL" : {
+                "type" : "string",
+                "example" : "https://pixabay.com/vectors/girl-cute-cold-winter-anime-scarf-160326/"
+              }
+            }
+          }
+        }
+      },
+      "inline_response_404_1" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "Fail"
+          },
+          "data" : {
+            "type" : "object",
+            "properties" : {
+              "data" : {
+                "type" : "object",
+                "properties" : {
+                  "message" : {
+                    "type" : "string",
+                    "example" : "There is no player with the given id"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "inline_response_200_5" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "type" : "object",
+            "properties" : {
+              "id" : {
+                "type" : "integer",
+                "description" : "id opponent"
+              },
+              "usernameOpponent" : {
+                "type" : "string",
+                "description" : "username opponent",
+                "example" : "fuuhus"
+              }
+            }
+          }
+        }
+      },
+      "rooms_body" : {
+        "type" : "object",
+        "properties" : {
+          "username" : {
+            "type" : "string",
+            "example" : "husfuu"
+          }
+        }
+      },
+      "inline_response_200_6" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "type" : "object",
+            "properties" : {
+              "message" : {
+                "type" : "string",
+                "example" : "the room is created successfully"
+              }
+            }
+          }
+        }
+      },
+      "rooms_body_1" : {
+        "type" : "object",
+        "properties" : {
+          "username" : {
+            "type" : "string",
+            "example" : "husfuu"
+          }
+        }
+      },
+      "inline_response_200_7" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "id" : {
+                  "type" : "string",
+                  "example" : "game-01"
+                },
+                "startAt" : {
+                  "type" : "string",
+                  "example" : "12/12/2021 05:50:06"
+                },
+                "finishedAt" : {
+                  "type" : "string",
+                  "example" : "12/12/2021 05:54:00"
+                },
+                "winner" : {
+                  "type" : "string",
+                  "example" : "husfuu"
+                },
+                "round" : {
+                  "type" : "integer",
+                  "example" : 3
+                }
+              }
+            }
+          }
+        }
+      },
+      "inline_response_200_8" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "createdAt" : {
+                  "type" : "string",
+                  "example" : "12/12/2021 05:55:00"
+                },
+                "finishedAt" : {
+                  "type" : "string",
+                  "example" : "12/12/2021 05:55:00"
+                },
+                "winner" : {
+                  "type" : "string",
+                  "example" : "husfuu"
+                },
+                "choiceP1" : {
+                  "type" : "string",
+                  "example" : "paper"
+                },
+                "choiceP2" : {
+                  "type" : "string",
+                  "example" : "rock"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

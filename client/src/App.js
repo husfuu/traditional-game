@@ -4,9 +4,9 @@ import BootstrapNavbar from './components/Navbar';
 import Login from './pages/Login';
 import Opponent from './pages/Opponent';
 import Register from './pages/Register';
-import { AuthContext } from './helpers/AuthContext';
+
 import { UserContext } from './helpers/UserContext'
-// import { NameProvider } from './helpers/NameContext'
+
 
 {/* <Route path="/login"  element={<Login />} /> */}
 function App() {

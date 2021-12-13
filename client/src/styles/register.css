@@ -1,0 +1,31 @@
+.registration-page{
+    background-image: url("../assets/requirements.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    min-height: 100vh;
+}
+.container-registration{
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.registration{
+    text-align: center;
+    display: grid;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 20px;
+    padding: 20px 0 20px 0
+}
+
+button{
+    background-color: #FABB51;
+    border-style: none;
+    color: white;
+}

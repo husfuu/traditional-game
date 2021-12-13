@@ -1,14 +1,12 @@
 import React, {useState, useContext} from 'react'
 import OpponentCard from '../components/OpponentCard'
 import { Container, Row, Col, Button } from 'react-bootstrap'
-import  {AuthContext} from '../helpers/AuthContext'
 import '../styles/Opponent.css'
 
 const opponentData = require('../data/opponents.json')
 
 const Opponent = () => {
     const [getRenderedItems, setRenderedItems] = useState(opponentData)
-    const isAuth = useContext(AuthContext)
 
     const onClickButton = (chosenCategory) => {
         if (chosenCategory === "ALL") {
